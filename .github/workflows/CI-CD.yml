@@ -23,6 +23,26 @@ jobs:
     #     env:
     #     ASSETS_UPLOADER_SECRET: "${{ secrets.ASSETS_UPLOADER_SECRET }}"
     #     ASSETS_UPLOADER_KEY: "${{ secrets.ASSETS_UPLOADER_KEY }}"
+
+       #     - name: Import Secrets
+       #   uses: hashicorp/vault-action@v2
+       #   id: secrets        
+       #   with:
+       #     url: https://vault.example.com/ 
+       #     role: content
+       #     method: jwt
+       #     secrets: |
+       #         kv/data/content/codio-ed-dev client_id;
+       #         kv/data/content/codio-ed-dev secret_id;
+       # - name: Publish
+       #   uses: codio/codio-assignment-publish-action@master
+       #   with:
+       #     client-id: ${{ steps.secrets.outputs.client_id }}
+       #     secret-id: ${{ steps.secrets.outputs.secret_id }}
+       #     course-name: <Course Name>
+       #     assignment-name: <Assignment Name>
+       #     dir: ./
+       #     changelog: ${{ github.event.head_commit.message }}
   deploy:
     needs: build
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
