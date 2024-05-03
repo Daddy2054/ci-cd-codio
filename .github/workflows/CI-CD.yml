@@ -16,6 +16,13 @@ jobs:
       with: 
         name: assets
         path: dist
+    # - name: build
+    #   run: |
+    #     ./build.sh
+    #     timeout-minutes: 15
+    #     env:
+    #     ASSETS_UPLOADER_SECRET: "${{ secrets.ASSETS_UPLOADER_SECRET }}"
+    #     ASSETS_UPLOADER_KEY: "${{ secrets.ASSETS_UPLOADER_KEY }}"
   deploy:
     needs: build
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
